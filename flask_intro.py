@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
@@ -18,6 +18,16 @@ def grazi_diena():
 def zmones():
     zmones = ['Justina', 'Darius', 'Ingrida', 'Simas', 'Sergejus', 'Arnoldas']
     return render_template("zmones.html", zmones=zmones)
+
+@app.route("/login")
+def login():
+    return render_template("login.html")
+
+@app.route("/hello")
+def hello():
+    return render_template("hello.html", **request.args)
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)
